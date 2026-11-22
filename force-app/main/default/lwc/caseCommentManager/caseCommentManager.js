@@ -3,6 +3,7 @@ import getCaseComments from '@salesforce/apex/CaseCommentHandler.getCaseComments
 export default class CaseCommentManager extends LightningElement {
     @api recordId;
     caseCommentData = [];
+    commentCnt = 5;
     error;
     connectedCallback(){
         this.loadCaseComments();
@@ -10,12 +11,17 @@ export default class CaseCommentManager extends LightningElement {
 
     async loadCaseComments(){
         try{
-            const res = await getCaseComments({caseId : this.recordId});
+            const res = await getCaseComments({caseId : this.recordId,cnt : this.commentCnt});
             this.caseCommentData = res;
             console.log('case comment trigger component ' , this.caseCommentData[0].CommentBody);
-        }catch(error){
+        }catch(e){
             console.log(e.body);
         }
 
+    }
+
+    handleLoadMore(){
+        this.commentCnt += 5;
+        this.loadCaseComments();
     }
 }

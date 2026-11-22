@@ -1,11 +1,15 @@
 <template>
     <lightning-card title="Case Comments">
-        <template lwc:if={caseCommentData}>
+        <template lwc:if={caseCommentData.length}>
             <div class="commentsContainer">
                 <template for:each={caseCommentData} for:item="caseComment">
-                <p key={caseComment.Id}>{caseComment.CommentBody}</p>
-            </template>
+                    <p key={caseComment.Id}>{caseComment.CommentBody}</p>
+                </template>
+                <lightning-button label="Load More" onclick={handleLoadMore}></lightning-button>
             </div>
+        </template>
+        <template lwc:else>
+            <p class="commentsContainer">No Comments</p>
         </template>
     </lightning-card>
 </template>

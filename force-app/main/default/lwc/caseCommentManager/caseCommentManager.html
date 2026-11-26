@@ -3,9 +3,15 @@
         <template lwc:if={caseCommentData.length}>
             <div class="commentsContainer">
                 <template for:each={caseCommentData} for:item="caseComment">
-                    <p key={caseComment.Id}>{caseComment.CommentBody}</p>
+                    <div class="commentContainer" key={caseComment.Id}>
+                        <div>{caseComment.CreatedBy.Name}</div>
+                        <div>{caseComment.CommentBody}</div>
+                        <div>{caseComment.CreatedDate}</div>
+                    </div>
                 </template>
-                <lightning-button label="Load More" onclick={handleLoadMore}></lightning-button>
+                <template lwc:if={displayLoadMore}>
+                    <lightning-button label="Load More" onclick={handleLoadMore}></lightning-button>
+                </template>
             </div>
         </template>
         <template lwc:else>

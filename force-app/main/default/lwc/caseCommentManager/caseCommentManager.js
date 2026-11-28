@@ -28,6 +28,12 @@ export default class CaseCommentManager extends LightningElement {
         }
     }
 
+    handleRefresh(){
+        this.commentCnt = 5;
+        this.displayLoadMore = false;
+        this.loadCaseComments();
+    }
+
     handleLoadMore() {
         this.commentCnt += 5;
         this.loadCaseComments();

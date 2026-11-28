@@ -1,6 +1,6 @@
 
 public with sharing class CaseCommentHandler {
-    @AuraEnabled(cacheable = true)
+    @AuraEnabled
     public static List<CaseComment> getCaseComments(String caseId,Integer cnt){
         try {
             return [select 

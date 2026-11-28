@@ -1,5 +1,12 @@
 <template>
-    <lightning-card title="Case Comments">
+    <lightning-card>
+        <div class="header">
+            <h1 style="width: 50%;">Case Comments</h1>
+            <lightning-button-icon class="refreshIcon" icon-name="utility:refresh" alternative-text="Refresh"
+                title="Refresh" onclick={handleRefresh}>
+            </lightning-button-icon>
+        </div>
+
         <template lwc:if={caseCommentData.length}>
             <div class="commentsContainer">
                 <template for:each={caseCommentData} for:item="caseComment">
